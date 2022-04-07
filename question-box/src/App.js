@@ -1,21 +1,20 @@
 // import { useState } from 'react';
-import Topbar from './Components/Topbar';
-// import QuestionList from './Components/QuestionList'
+import Topbar from './components/Topbar';
+import QuestionList from './components/QuestionList'
 
 
 function App () {
 
   return (   
-    <>
     <div className="App">
       <Topbar />
-      <h1 className='container is-fluid'>Phone a Friend!</h1>
+      {/* <h1 className='container is-fluid'>Phone a Friend!</h1> */}
+    <body style={{ margin: '4%' }}>
+      <div className="question-list">
+        <QuestionList />
+      </div>
+      </body>
     </div>
-    {/* <div className="QuestionList">
-      <QuestionList />
-      Anything here??
-    </div> */}
-    </>
   )
   }
 

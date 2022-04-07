@@ -1,4 +1,6 @@
-* {
+
+
+/* * {
   margin: 0;
   padding: 0;
 }
@@ -11,26 +13,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+} */
 
 
-main {
-  margin: 16px;
-}
 
-.navbar {
+/* .navbar {
+  height: 45px; 
   display: flex;
   align-items: center;
-  /* background-color: rgb(219, 194, 244); */
-  color: black;
-  font-family: Helvetica;
-  font-weight: 300;
-}
+  background-color: rgb(219, 194, 244);
+
+} 
 
 .navbar-title {
   margin-right: auto;
@@ -42,4 +35,4 @@ main {
   padding: 16px 16px;
   cursor: pointer;
   vertical-align: middle;
-}
+}     */
