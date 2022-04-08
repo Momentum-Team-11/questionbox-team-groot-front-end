@@ -1,20 +1,23 @@
 import 'bulma/css/bulma.min.css';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  // const url=""
-
   return (
     <div className="navbar">
-      
-      <h1>Phone a Friend</h1>
-    
+      <h5>NAVBAR</h5>
       <img
-        src={require("./logo.png")}
-        alt="logo"
-      ></img>
-      <a href="home">Home</a>
-      <a href="create-card">Login</a>
-      <a href="profile">Your Profile</a>
+          src="./logo.png"
+          alt="Phone a friend logo"
+          width="112"
+          height="40"
+        />
+      <h1>Phone a Friend</h1>
+      <ul>
+        <li><Link to="/login">Login</Link></li>
+        <li><Link to="/home">Logout</Link></li>
+     	</ul>
+      <hr />
     </div>
   );
 };

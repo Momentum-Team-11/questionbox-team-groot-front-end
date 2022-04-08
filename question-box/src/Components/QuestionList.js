@@ -1,6 +1,7 @@
 // import { testData } from './DataFile';
 import { questionList } from '../dataFile'
-import {useState} from 'react'
+import axios from "axios"
+import {useState, useEffect} from 'react'
 // import { Question } from './Question'
 import { Card, Media, Heading, Content, Image, Button, Container, Notification } from 'react-bulma-components';
 
@@ -16,8 +17,17 @@ import { Card, Media, Heading, Content, Image, Button, Container, Notification }
 
 const QuestionList = () => {
   // const test_data = testData;
-  const [questions, setQuestions] = useState(questionList)
-
+  const [questions, setQuestions] = useState([]);
+  
+  useEffect(() => {
+    axios
+      .get("https://phone-a-friend.herokuapp.com/api/questions")
+      .then((response) => {
+        console.log(response.data)
+        setQuestions(response.data)
+      })
+  }, [])
+  
 
   return (
     <>
@@ -41,13 +51,13 @@ const QuestionList = () => {
             <Image
               size={64}
               alt="avatar"
-              src="./logo.png"
+              src=       {question.photo} 
             />
           </Media.Item>
           <Media.Item>
-            <Heading size={4}>{question.user}</Heading>
+            <Heading size={4}>{question.username}</Heading>
             <Heading subtitle size={6}>
-            {question.user_name}
+            {question.user_first_name} {question.user_last_name} 
             </Heading>
             <Heading subtitle size={6}>
             {question.date_asked}
