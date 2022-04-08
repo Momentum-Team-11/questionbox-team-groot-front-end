@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom'
 import axios from 'axios'
 
 
+
 export default function Login({ setAuth, isLoggedIn }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -27,7 +28,7 @@ export default function Login({ setAuth, isLoggedIn }) {
       .catch((e) => setError(e.message))
   }
 
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     return <Navigate to="/home" />
   }
 

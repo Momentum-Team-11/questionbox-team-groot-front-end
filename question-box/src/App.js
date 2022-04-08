@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Topbar from './components/Topbar';
 import QuestionList from './components/QuestionList';
+import QuestionDetail from './components/QuestionList';
 // import QuestionDetail from './components/QuestionDetail'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
@@ -19,6 +20,12 @@ const App = () => {
     setUsername(username)
   }
 
+  const logout = () => {
+    setUsername("")
+    setToken("")
+    setIsLoggedIn(false)
+  }
+
   const isLoggedIn = username && token
     // {isLoggedIn === true ? (
     //   setIsLoggedIn(true)
@@ -33,16 +40,16 @@ const App = () => {
       {/* <h1 className='container is-fluid'>Phone a Friend!</h1> */}
     <Router>
       <Topbar 
-        element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />}
+        element={<Login setAuth={setAuth} logout={logout} isLoggedIn={isLoggedIn} />}
 
       />
       <Routes>
-        <Route path="/" element={<QuestionList token={token} />} />
+        <Route path="/" element={<QuestionList token={token} />}> </Route>
         <Route path="home" element={<QuestionList token={token} />}></Route>
-        {/* <Route
-          path="questions/:pk"
+        <Route
+          path="questions/:questionId"
           element={<QuestionDetail token={token} />}
-        ></Route> */}
+        ></Route>
         <Route
           path="/login"
           element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />}

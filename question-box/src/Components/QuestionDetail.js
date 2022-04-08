@@ -1,21 +1,23 @@
-// import { questionList } from '../dataFile'
+// import { questionList } from './QuestionList'
 // import {useState} from 'react'
-// // import { Question } from './Question'
+import { Navigate } from 'react-router-dom'
+
 // import { Card, Media, Heading, Content, Image, Button, Container, Notification } from 'react-bulma-components';
 
-// // const Question {test_data.map((quest, idx) => {
-// //   return <Question
-// //     user={quest.user}
-// //     title={quest.title}
-// //     question={quest.question}
-// //     date={quest.date_asked}
-// //     key={idx}
-// //     />
-// // })}
+
 // const QuestionDetail = () => {
 //   // const test_data = testData;
-//   const [questions, setQuestions] = useState(questionList)
+  // const [questions, setQuestions] = useState(questionList)
 
+  const QuestionDetail = (questionId) => {
+  return  (
+    <div>
+    <h1>"You made it"</h1>
+    </div>
+    
+  )
+}
+export default QuestionDetail
 //   return (
 //   <Card style={{ width: 600, margin: 'auto' }}>
 //       <Card.Content>
