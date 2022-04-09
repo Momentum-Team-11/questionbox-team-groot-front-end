@@ -1,20 +1,39 @@
-// import { questionList } from './QuestionList'
-// import {useState} from 'react'
-import { Navigate } from 'react-router-dom'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import { useParams, Link } from 'react-router-dom'
 
-// import { Card, Media, Heading, Content, Image, Button, Container, Notification } from 'react-bulma-components';
+export const QuestionDetail = ({ token }) => {
+  const [question, setQuestion] = useState(null)
+  const params = useParams()
 
+  useEffect(() => {
+    axios
+      .get(`https://phone-a-friend.herokuapp.com/api/question/${params.questionId}`, {
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      })
+      .then((res) => {
+        setQuestion(res.data)
+        console.log("request fired")
+      })
+  }, [params.questionId, token])
 
-// const QuestionDetail = () => {
-//   // const test_data = testData;
-  // const [questions, setQuestions] = useState(questionList)
-
-  const QuestionDetail = (questionId) => {
-  return  (
-    <div>
-    <h1>"You made it"</h1>
-    </div>
-    
+  return (
+    <>
+      <Link to="/">Back to all questions</Link>
+      {question && (
+        <>
+          <div className="question content container-box" id={question.pk}>
+            <h2>{question.title}</h2>
+            <div className="details">
+              <p>{question.username}</p>
+              <p>{question.question}</p>
+            </div>
+          </div>
+        </>
+      )}
+    </>
   )
 }
 export default QuestionDetail

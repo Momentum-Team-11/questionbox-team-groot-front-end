@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import Topbar from './components/Topbar';
 import QuestionList from './components/QuestionList';
-import QuestionDetail from './components/QuestionList';
-// import QuestionDetail from './components/QuestionDetail'
+import QuestionDetail from './components/QuestionDetail';
+import AskQuestion from './components/AskQuestion'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import useLocalStorageState from 'use-local-storage-state'
-
+import { Logout } from './components/Logout'
 
 const App = () => {
   //use local storage to keep this token hanging around
@@ -20,11 +20,7 @@ const App = () => {
     setUsername(username)
   }
 
-  const logout = () => {
-    setUsername("")
-    setToken("")
-    setIsLoggedIn(false)
-  }
+
 
   const isLoggedIn = username && token
     // {isLoggedIn === true ? (
@@ -40,19 +36,23 @@ const App = () => {
       {/* <h1 className='container is-fluid'>Phone a Friend!</h1> */}
     <Router>
       <Topbar 
-        element={<Login setAuth={setAuth} logout={logout} isLoggedIn={isLoggedIn} />}
-
-      />
+        isLoggedIn={isLoggedIn}
+        />
       <Routes>
         <Route path="/" element={<QuestionList token={token} />}> </Route>
         <Route path="home" element={<QuestionList token={token} />}></Route>
+        <Route path="/ask" element={<AskQuestion token={token} />}></Route>
         <Route
-          path="questions/:questionId"
+          path="/questions/:questionId"
           element={<QuestionDetail token={token} />}
         ></Route>
         <Route
           path="/login"
           element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />}
+        />
+        <Route
+          path="/logout"
+          element={<Logout setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
       </Routes>
     </Router>

@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Section, Navbar } from 'react-bulma-components';
 import { Link } from 'react-router-dom';
 
-const Topbar = ({isLoggedIn, logout }) => {
-  console.log(logout)
+
+
+const Topbar = ({isLoggedIn }) => {
+
   console.log(isLoggedIn)
+
   return (
     // <Section >
     <Navbar color="info" m="3" p="3">
@@ -37,8 +40,8 @@ const Topbar = ({isLoggedIn, logout }) => {
           <Link to="/login">Login</Link>
         </Navbar.Item> 
         ) : (
-        <Navbar.Item position="end" onClick={logout}>
-          <Link to="/home">Logout</Link>
+        <Navbar.Item position="end">
+          <Link to="/logout">Logout</Link>
         </Navbar.Item>  
         )
       }

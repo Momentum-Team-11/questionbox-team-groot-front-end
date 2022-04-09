@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios'
+import { Form, Button } from 'react-bulma-components';
 
 
 
@@ -28,7 +29,7 @@ export default function Login({ setAuth, isLoggedIn }) {
       .catch((e) => setError(e.message))
   }
 
-  if (!isLoggedIn) {
+  if (isLoggedIn) {
     return <Navigate to="/home" />
   }
 
@@ -37,35 +38,60 @@ export default function Login({ setAuth, isLoggedIn }) {
       <h2>Log In</h2>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleLogin}>
-        <div className="field-controls">
-          <label className="input-label" htmlFor="username">
+        <Form.Field className="field-controls">
+          <Form.Label className="input-label" htmlFor="username">
             Username
-          </label>
-          <input
+          </Form.Label>
+          <Form.Input
             type="text"
             id="username"
             required
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
+        </Form.Field>
 
-        <div className="field-controls">
-          <label className="input-label" htmlFor="password">
+        <Form.Control className="field-controls">
+          <Form.Label className="input-label" htmlFor="password">
             Password
-          </label>
-          <input
+          </Form.Label>
+          <Form.Input
             type="password"
             id="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+        </Form.Control>
         <div className="field-controls">
-          <button type="submit">Log in</button>
+          <Button type="submit">Log in</Button>
         </div>
       </form>
     </div>
   )
 }
+
+{/* <>
+  <Form.Field>
+    <Form.Label>
+      Username
+    <Form./Label>
+    <Control>
+      <Input
+        placeholder="e.g. John Doe"
+        type="text"
+      />
+    </Control>
+  </Field>
+  <Field>
+    <Label>
+      Password
+    </Label>
+    <Control>
+      <Input
+        placeholder="password"
+        type="password"
+      />
+    </Control>
+  </Field>
+</> */}

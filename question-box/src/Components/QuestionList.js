@@ -1,14 +1,14 @@
 // import { testData } from './DataFile';
-import { questionList } from '../dataFile'
+// import { questionList } from '../dataFile'
 import axios from "axios"
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 // import { Question } from './Question'
-import { Card, Media, Heading, Content, Image, Button, Container, Notification } from 'react-bulma-components';
+import { Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
-  const [questionId, setQuestionId] = useState(null)
+  // const [questionId, setQuestionId] = useState(null)
   
   useEffect(() => {
     axios
@@ -24,6 +24,16 @@ const QuestionList = () => {
     <div className="header-home">
       <h1>These friends are calling...</h1>
     </div>
+    <Section>
+    <Button>
+        <Link to="/login">
+        Login
+        </Link></Button>
+        <Button>
+        <Link to="/ask">
+        Phone a Friend!
+        </Link></Button>
+    </Section>
       {questions.map((question, key) => 
       
       <div key={key}>
@@ -56,13 +66,8 @@ const QuestionList = () => {
               {question.question}
             </Notification>
             </Container>
-        <Button size="small" onClick={() => {
-          setQuestionId(question.pk) //not working
-          console.log(questionId)
-          }
-        }
-        >
-        <Link to={`/questions/${questionId}`}>
+        <Button size="small">
+        <Link to={`/questions/${question.pk}`}>
         Click for more 
         </Link></Button>
         </Content>
