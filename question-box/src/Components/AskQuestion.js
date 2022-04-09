@@ -1,64 +1,69 @@
 import { useState } from 'react'
 import axios from 'axios'
-import { Form, Button } from 'react-bulma-components';
-
+import { Container, Button, Form } from 'react-bulma-components';
+import { Link } from 'react-router-dom'
 
 export default function QuestionForm({ token }) {
     const [questionTitle, setQuestionTitle] = useState('')
-    const [questionBody, setQuestionBody] = useState('')
+    const [questionDetail, setQuestionDetail] = useState('')
 
-    const handleAsk = (event) => {
-      const questionApi = "https://phone-a-friend.herokuapp.com/api/questions"
-      event.preventDefault()
-      axios.post(questionApi, {
+    const handleAsk = (e) => {
+      e.preventDefault()
+      axios
+      .post('https://phone-a-friend.herokuapp.com/api/questions', {
+    
           "title": questionTitle,
-          "question": questionBody,
+          "question": questionDetail,
       },
       {
-          headers: {
-              'Authorization': `Token ${token}`
-          }
+        headers: {
+          'Authorization': `Token ${token}`
+        }
       }
-      ).then(response => {
-          setQuestionTitle('')
-          setQuestionBody('')
-          console.log(response)
-          return response
+      ).then(res => {
+        console.log(res)
+        setQuestionTitle('')
+        setQuestionDetail('')
+          
       })
   }
 
-    const handleChange = (inputType, event) => {
-        if (inputType === 'questionTitle') {
-            setQuestionTitle(event.target.value)
+    const handleChange = (inputType, e) => {
+        if (inputType === 'questTitle') {
+          setQuestionTitle(e.target.value)
         }
-        if (inputType === 'questionBody') {
-            setQuestionBody(event.target.value)
+        if (inputType === 'questDetail') {
+          setQuestionDetail(e.target.value)
         }
     }
 
     return (
-        <div className='form-container'>
-            <form className='question-form' onSubmit={handleAsk}>
-                <label className='form-label'>Question Title: </label>
-                <input
-                    className='input-field'
-                    type='text'
-                    placeholder='Question title'
-                    value={questionTitle}
-                    onChange={(event) => handleChange('questionTitle', event)}
+      <>
+        <Button>
+          <Link to="/">Back to all questions</Link>
+        </Button>
+        <Container className='form-container'>
+          <form className='question-form' onSubmit={handleAsk}>
+              <Form.Label className='form-label'>What's your Question, friend? </Form.Label>
+                <Form.Input
+                  className='input-field'
+                  type='text'
+                  placeholder='Put question title here'
+                  value={questionTitle}
+                  onChange={(e) => handleChange('questTitle', e)}
                 />
-                <label className='form-label'>Question Details: </label>
-                <textarea
-                    className='textarea-field'
-                    type='text'
-                    placeholder='Question details'
-                    value={questionBody}
-                    onChange={(event) => handleChange('questionBody', event)}
+              <Form.Label className='form-label'>Tell us the details! </Form.Label>
+                <Form.Textarea
+                  className='textarea-field'
+                  type='text'
+                  placeholder='Question details here...'
+                  value={questionDetail}
+                  onChange={(e) => handleChange('questDetail', e)}
                 />
-                <Button className='submit-button'>Submit Question</Button>
-            </form>
-        </div>
-
+            <Button className='submit-button'>Submit Question</Button>
+          </form>
+        </Container>
+      </>
     )
 }
 
