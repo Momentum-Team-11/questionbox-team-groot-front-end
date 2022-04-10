@@ -45,7 +45,7 @@ const QuestionList = () => {
             <Image
               size={64}
               alt="avatar"
-              src=       {question.photo} 
+              src= {question.photo} 
             />
           </Media.Item>
           <Media.Item>

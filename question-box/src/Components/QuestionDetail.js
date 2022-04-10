@@ -1,6 +1,8 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import AnswerForm from './Answer'
+import { Container, Notification, Form, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
 
 export const QuestionDetail = ({ token }) => {
   const [question, setQuestion] = useState(null)
@@ -17,8 +19,7 @@ export const QuestionDetail = ({ token }) => {
       .then((res) => {
         setQuestion(res.data)
         setResponses(res.data.responses)
-        console.log("request fired")
-        console.log(res.data.responses.user)
+        console.log("question detail request fired")
       })
   }, [params.questionId, token])
 
@@ -32,75 +33,113 @@ export const QuestionDetail = ({ token }) => {
 
   return (
     <>
-      <Link to="/">Back to all questions</Link>
+      <Button><Link to="/">Back to all questions</Link></Button>
+    
       {question && (
         <>
           <div className="question content container-box" id={question.pk}>
-            <h2>{question.title}</h2>
-            <div className="details">
-              
-              <p>{question.user_first_name} {question.user_last_name} </p>
-              <p>{question.username}</p>
-              <p>{question.question}</p>
-            </div>
-    
-            <div className="responses container-box">
-            <div>
-        {responses.map((response, idx) => 
-            <div className="responses container-box" idx={response.pk}>
-          <h3>Everything below this line is a comment</h3>
-          <p>Response pk: {response.pk}</p>
-          <p>Response user: {response.user}</p>
-          <p>Response question: {response.question}</p>
-          <p>Response answer: {response.answer}</p>
-          <p>Response date answered: {response.date_answered}</p>
-            </div>
+          <Container mb='5' className="question-list container-box">
+      {/* <Card style={{ width: 800, margin: 'auto' }}> */}
+      <Card>
+        <Card.Content>
+          <Media>
+            <Media.Item renderAs="figure" align="left">
+            <Image
+              size={64}
+              alt="avatar"
+              src= {question.photo} 
+            />
+          </Media.Item>
+          <Media.Item>
+            <Heading size={4}>{question.username}</Heading>
+            <Heading subtitle size={6}>
+            {question.user_first_name} {question.user_last_name} 
+            </Heading>
+            <Heading subtitle size={6}>
+            {question.date_asked}
+            </Heading>
+          </Media.Item>
+        </Media>
+        <Content>
+        <strong>{question.title}</strong>
+          <br />
+          <Container>
+            <Notification color="info-light" mt="3" mb="3">
+              {question.question}
+            </Notification>
+            </Container>
+        </Content>
+      </Card.Content>
+    </Card>
+  </Container>
+  </div>
+  These are the responses
+  <Section>
+  {responses.map((response, idx) => 
+      <Box idx={response.pk}>
+        <Media renderAs="article">
+          <Media.Item align="left">
+            <Image
+              src="http://bulma.io/images/placeholders/128x128.png"
+              size={64}
+            />
+          </Media.Item>
+          <Media.Item align="center">
+            <Content>
+              <div>
+                <strong>{response.user}</strong>
+                <br />
+                <p>{response.date_answered}</p>
+                {response.answer}
+                <br />
+                <small>
+                  Like button
+                </small>
+              </div>
+            </Content>
+          </Media.Item>
+        </Media>
+      
+      </Box>
+  )}
+
+  {/* Here is where a user can reply */}
+      <Box>
+      <Media id={question.pk} renderAs="article">
+          <Media.Item align="left">
+            <Image
+              src="http://bulma.io/images/placeholders/128x128.png"
+              size={64}
+            />
+          </Media.Item>
+          <Media.Item id="answer-text" align="center">
           
-      )}
-    </div>
-          
-            </div>
-          </div>
-        </>
+          <AnswerForm
+                token={token}
+                questionPk={question.pk}
+          />
+          </Media.Item>
+        </Media>
+      </Box>
+    </Section>
+    )
+      </>
       )}
     </>
-
     
   )
 }
 export default QuestionDetail
-//   return (
-//   <Card style={{ width: 600, margin: 'auto' }}>
-//       <Card.Content>
-//         <Media>
-//           <Media.Item renderAs="figure" align="left">
-//             <Image
-//               size={64}
-//               alt="avatar"
-//               src="./logo.png"
-//             />
-//           </Media.Item>
-//           <Media.Item>
-//             <Heading size={4}>Name</Heading>
-//             <Heading subtitle size={6}>
-//             Username
-//             </Heading>
-//             <Heading subtitle size={6}>
-//             Date
-//             </Heading>
-//           </Media.Item>
-//         </Media>
-//         <Content>
-//           Question title
-//           <br />
-//           <Container>
-//             <Notification color="info-light" mt="3" mb="3">
-//               Question Details
-//             </Notification>
-//             </Container>
-//         <Button size="small">Click for more </Button>
-//         </Content>
-//       </Card.Content>
-//     </Card>
-//   )
-// }
+
+
+// {responses.map((response, idx) => 
+//   <div className="responses container-box" idx={response.pk}>
+// <h3>Everything below this line is a comment</h3>
+// <p>Response pk: {response.pk}</p>
+// <p>Response user: {response.user}</p>
+// <p>Response question: {response.question}</p>
+// <p>Response answer: {response.answer}</p>
+// <p>Response date answered: {response.date_answered}</p>
+//   </div>
+
+// )}
