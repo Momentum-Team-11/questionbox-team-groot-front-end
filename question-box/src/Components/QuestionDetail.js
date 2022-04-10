@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 
 export const QuestionDetail = ({ token }) => {
   const [question, setQuestion] = useState(null)
+  const [responses, setResponses] = useState([])
   const params = useParams()
 
   useEffect(() => {
@@ -15,9 +16,19 @@ export const QuestionDetail = ({ token }) => {
       })
       .then((res) => {
         setQuestion(res.data)
+        setResponses(res.data.responses)
         console.log("request fired")
+        console.log(res.data.responses.user)
       })
   }, [params.questionId, token])
+
+  // const response = [
+
+  //   responses.map(responses => [{name: 'post.firstname', 
+  //   dateregistered: 'post.date', 
+  //   department: 'post.department'}])
+  
+  //   ];
 
   return (
     <>
@@ -27,13 +38,34 @@ export const QuestionDetail = ({ token }) => {
           <div className="question content container-box" id={question.pk}>
             <h2>{question.title}</h2>
             <div className="details">
+              
+              <p>{question.user_first_name} {question.user_last_name} </p>
               <p>{question.username}</p>
               <p>{question.question}</p>
+            </div>
+    
+            <div className="responses container-box">
+            <div>
+        {responses.map((response, idx) => 
+            <div className="responses container-box" idx={response.pk}>
+          <h3>Everything below this line is a comment</h3>
+          <p>Response pk: {response.pk}</p>
+          <p>Response user: {response.user}</p>
+          <p>Response question: {response.question}</p>
+          <p>Response answer: {response.answer}</p>
+          <p>Response date answered: {response.date_answered}</p>
+            </div>
+          
+      )}
+    </div>
+          
             </div>
           </div>
         </>
       )}
     </>
+
+    
   )
 }
 export default QuestionDetail

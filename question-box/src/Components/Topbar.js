@@ -36,9 +36,14 @@ const Topbar = ({isLoggedIn }) => {
       {/* <Navbar.Container position="end"> */}
   
       { !isLoggedIn ? (
+      <>
         <Navbar.Item position="end">
           <Link to="/login">Login</Link>
         </Navbar.Item> 
+        <Navbar.Item position="end">
+          <Link to="/Register">Register</Link>
+        </Navbar.Item> 
+        </>
         ) : (
         <Navbar.Item position="end">
           <Link to="/logout">Logout</Link>

@@ -5,6 +5,7 @@ import QuestionDetail from './components/QuestionDetail';
 import AskQuestion from './components/AskQuestion'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Login from './components/Login'
+import Register from './components/Register'
 import useLocalStorageState from 'use-local-storage-state'
 import { Logout } from './components/Logout'
 
@@ -50,6 +51,10 @@ const App = () => {
           path="/login"
           element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />}
         />
+        <Route
+            path="/register"
+            element={<Register isLoggedIn={isLoggedIn} />}
+          />
         <Route
           path="/logout"
           element={<Logout setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
