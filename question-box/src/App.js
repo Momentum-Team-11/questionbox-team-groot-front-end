@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import NavBar from './components/NavBar';
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
 import AskQuestion from './components/AskQuestion'
@@ -10,6 +8,7 @@ import UserAnswers from './components/UserAnswers'
 import UserQuestions from './components/UserQuestions'
 import useLocalStorageState from 'use-local-storage-state'
 import { Logout } from './components/Logout'
+import NavBar from './components/NavBar';
 
 const App = () => {
   //use local storage to keep this token hanging around
@@ -22,8 +21,6 @@ const App = () => {
     setToken(token)
     setUsername(username)
   }
-
-
 
   const isLoggedIn = username && token
     // {isLoggedIn === true ? (
