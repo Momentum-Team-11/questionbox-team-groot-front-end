@@ -17,7 +17,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
       aria-label="main navigation"
     >
       <div className="level-left">
-        <div className="is-size-2 has-text-dark py-3 px-3 level-item">
+        <div className="is-size-3 has-text-dark py-3 px-3 level-item">
           <Link to="/">
             <span className="icon is-large mr-1">
               <i className="fa-solid fa-book-bookmark"></i>
