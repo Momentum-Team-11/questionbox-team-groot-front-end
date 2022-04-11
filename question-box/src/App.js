@@ -48,11 +48,11 @@ const App = () => {
         ></Route>
         <Route
           path="/login"
-          element={<Login setAuth={setAuth} isLoggedIn={isLoggedIn} />}
+          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
         />
         <Route
             path="/register"
-            element={<Register isLoggedIn={isLoggedIn} />}
+            element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} setToken={setToken}/>}
           />
         <Route
           path="/logout"
@@ -60,7 +60,7 @@ const App = () => {
         />
         <Route
           path="/my_questions"
-          element={<UserQuestions setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
+          element={<UserQuestions setAuth={setAuth} token={token} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/my_answers"

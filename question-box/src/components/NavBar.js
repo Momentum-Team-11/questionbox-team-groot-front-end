@@ -49,7 +49,8 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
               {(toggleMenu && (
             <div className="navbar-dropdown">
               <div className="navbar-item">
-              <Link to="/my_questions">My Questions</Link>
+              {/* <Link to={`/my_questions/${user.pk}`}>My Questions</Link> */}
+              <Link to='/my_questions'>My Questions</Link>
             </div>
             <div className="navbar-item">
               <Link to="/my_answers">My Answers</Link>

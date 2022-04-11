@@ -20,6 +20,7 @@ export const QuestionDetail = ({ token }) => {
         setQuestion(res.data)
         setResponses(res.data.responses)
         console.log("question detail request fired")
+        console.log(res.data.responses)
       })
   }, [params.questionId, token])
 
