@@ -75,9 +75,10 @@ export const QuestionDetail = ({ token }) => {
   </div>
   These are the responses
   <Section>
-  {responses.map((response, idx) => 
-      <Box idx={response.pk}>
-        <Media renderAs="article">
+    
+      <Box >
+      {responses.map((response, idx) => 
+        <Media key={response.pk}renderAs="article">
           <Media.Item align="left">
             <Image
               src="http://bulma.io/images/placeholders/128x128.png"
@@ -99,12 +100,12 @@ export const QuestionDetail = ({ token }) => {
             </Content>
           </Media.Item>
         </Media>
-      
-      </Box>
-  )}
+      )}
+    </Box>
+
 
   {/* Here is where a user can reply */}
-      <Box>
+    <Box>
       <Media id={question.pk} renderAs="article">
           <Media.Item align="left">
             <Image
@@ -122,6 +123,7 @@ export const QuestionDetail = ({ token }) => {
         </Media>
       </Box>
     </Section>
+    
     )
       </>
       )}

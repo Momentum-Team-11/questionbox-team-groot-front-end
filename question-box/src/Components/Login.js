@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios'
-import { Form, Button } from 'react-bulma-components';
+import { Form, Button, Box } from 'react-bulma-components';
 
 
 
@@ -36,6 +36,7 @@ export default function Login({ setAuth, isLoggedIn }) {
   return (
     <div className="Login">
       <h2>Log In</h2>
+      <Box style={{ width: 400, margin: 'auto' }}>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleLogin}>
         <Form.Field className="field-controls">
@@ -64,9 +65,12 @@ export default function Login({ setAuth, isLoggedIn }) {
           />
         </Form.Control>
         <div className="field-controls">
-          <Button type="submit">Log in</Button>
+          <Button.Group align="right" mt="4">
+            <Button color="primary" type="submit">Log in</Button>
+          </Button.Group>
         </div>
       </form>
+      </Box>
     </div>
   )
 }
