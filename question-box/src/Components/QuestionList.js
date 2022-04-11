@@ -1,9 +1,7 @@
-// import { testData } from './DataFile';
-// import { questionList } from '../dataFile'
+
 import axios from "axios"
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-// import { Question } from './Question'
 import { Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
 
 const QuestionList = () => {
