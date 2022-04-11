@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { Card, Media, Heading, Content, Image, Box, Form, Button, Container, Notification, Section } from 'react-bulma-components';
+import { Form, Button, } from 'react-bulma-components';
 
 // import { Link } from 'react-router-dom'
 

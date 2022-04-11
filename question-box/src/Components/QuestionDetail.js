@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import AnswerForm from './Answer'
-import { Container, Notification, Form, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
+import { Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
 
 export const QuestionDetail = ({ token }) => {
   const [question, setQuestion] = useState(null)

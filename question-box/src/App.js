@@ -1,13 +1,13 @@
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
-import AskQuestion from './components/AskQuestion'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import Login from './components/Login'
-import Register from './components/Register'
-import UserAnswers from './components/UserAnswers'
-import UserQuestions from './components/UserQuestions'
-import useLocalStorageState from 'use-local-storage-state'
-import { Logout } from './components/Logout'
+import AskQuestion from './components/AskQuestion';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Login from './components/Login';
+import Register from './components/Register';
+import UserAnswers from './components/UserAnswers';
+import UserQuestions from './components/UserQuestions';
+import useLocalStorageState from 'use-local-storage-state';
+import { Logout } from './components/Logout';
 import NavBar from './components/NavBar';
 
 const App = () => {
@@ -62,7 +62,7 @@ const App = () => {
           path="/my_questions"
           element={<UserQuestions setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
-         <Route
+        <Route
           path="/my_answers"
           element={<UserAnswers setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
