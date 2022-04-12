@@ -59,11 +59,11 @@ const App = () => {
         />
         <Route
           path="/my_questions"
-          element={<UserQuestions setAuth={setAuth} token={token} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
+          element={<UserQuestions token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/my_answers"
-          element={<UserAnswers setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
+          element={<UserAnswers token={token} isLoggedIn={isLoggedIn} />}
         />
       </Routes>
     </Router>

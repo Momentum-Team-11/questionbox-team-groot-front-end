@@ -2,7 +2,9 @@
 import axios from "axios"
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
-import { Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
+import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
@@ -21,16 +23,15 @@ const QuestionList = () => {
     <>
     <div className="header-home">
       <h1>These friends are calling...</h1>
+      <Icon>
+    <FontAwesomeIcon icon={faHome} />
+  </Icon>
+
     </div>
     <Section>
-    <Button>
-        <Link to="/login">
-        Login
-        </Link></Button>
-        <Button>
-        <Link to="/ask">
-        Phone a Friend!
-        </Link></Button>
+      <Button>
+        <Link to="/ask">Phone a Friend!</Link>
+      </Button>
     </Section>
       {questions.map((question, key) => 
       
