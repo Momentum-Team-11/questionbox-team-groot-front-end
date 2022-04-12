@@ -1,21 +1,22 @@
-import { Navigate, Link } from 'react-router-dom'
+import { Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import axios from 'axios';
+import { Form, Button, Box } from 'react-bulma-components';
 
 const Register = ({ isLoggedIn }) => {
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegistration = (e) => {
-    console.log('making post');
+    console.log("making post");
     e.preventDefault();
-    setError('');
+    setError("");
     console.log(username, password);
       axios
-        .post('https://questionbox-rocket.herokuapp.com/auth/users/', {
+        .post('https://phone-a-friend.herokuapp.com/api/auth/users/', {
           username: username,
           password: password,
         })
@@ -27,18 +28,24 @@ const Register = ({ isLoggedIn }) => {
         .catch((e) => setError(e.message))
       }
 
-  if (isLoggedIn || isRegistered) {
+  if (isLoggedIn) {
+    return <Navigate to='/' />
+  }
+
+  if (isRegistered) {
+    console.log("Registered!")
     return <Navigate to='/login' />
   }
 
   return (
-    <>
+    <div className="Register">
       <h2>Sign up here to phone a friend!</h2>
+      <Box style={{ width: 400, margin: 'auto' }}>
       {error && <div className="error">{error}</div>}
       <form onSubmit={handleRegistration}>
-        <div className='field-controls'>
-          <label htmlFor='reg-username'>username: </label>
-          <input
+        <Form.Field className='field-controls'>
+          <Form.Label htmlFor='reg-username'>Choose a Username: </Form.Label>
+          <Form.Input
             type='text'
             className='text-input'
             id='reg-username'
@@ -46,26 +53,24 @@ const Register = ({ isLoggedIn }) => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div className='field-controls'>
+        </Form.Field>
+        <Form.Field className='field-controls'>
           <br></br>
-          <label htmlFor='password'>password: </label>
-          <input
+          <Form.Label htmlFor='password'>Choose a Password: </Form.Label>
+          <Form.Input
             type='password'
             className='password-reg'
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
-        <div className='field-controls'>
-          <button type='submit'>Register</button>
-        </div>
+        </Form.Field>
+        <Button.Group align="right" mt="4" className='field-controls'>
+          <Button color="primary" type='submit'>Register</Button>
+        </Button.Group>
       </form>
-      <div className='field-controls'>
-        <Link to='/login'>Go to Login</Link>
-      </div>
-    </>
+    </Box>
+    </div>
   );
 }
 
