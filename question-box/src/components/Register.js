@@ -7,7 +7,7 @@ const Register = ({ isLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isRegistered, setIsRegistered] = useState('');
+  const [isRegistered, setIsRegistered] = useState(null);
 
   const handleRegistration = (e) => {
     console.log('handle registration');
@@ -21,7 +21,7 @@ const Register = ({ isLoggedIn }) => {
         })
         .then((res) => {
           console.log(res.data);
-          setIsRegistered(res.data.username);
+          setIsRegistered(true);
         })
         .catch((e) => setError(e.message))
       }
