@@ -7,10 +7,10 @@ const Register = ({ isLoggedIn }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const [isRegistered, setIsRegistered] = useState(null);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   const handleRegistration = (e) => {
-    console.log('handle registration');
+    console.log('making post');
     e.preventDefault();
     setError('');
     console.log(username, password);
@@ -22,6 +22,7 @@ const Register = ({ isLoggedIn }) => {
         .then((res) => {
           console.log(res.data);
           setIsRegistered(true);
+          console.log(isRegistered)
         })
         .catch((e) => setError(e.message))
       }

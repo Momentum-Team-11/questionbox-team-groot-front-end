@@ -14,7 +14,6 @@ const App = () => {
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
-  // const [loggedIn, setIsLoggedIn] = useState(false) //bc i don't know how to use isLoggedin
   console.log(token)
 
   const setAuth = (username, token) => {
