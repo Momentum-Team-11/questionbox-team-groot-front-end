@@ -25,6 +25,7 @@ const UserAnswers = ({ isLoggedIn, token }) => {
     // return <Navigate to="/" />
   }
 
+
   return (
     <>
     <div className="header-home">
@@ -56,7 +57,7 @@ const UserAnswers = ({ isLoggedIn, token }) => {
           </Media.Item>
         </Media>
         <Content>
-        <strong>This needs to be the question title</strong>
+        <strong>{answer.title}</strong>
           <br />
           <Container>
             <Notification color="info-light" mt="3" mb="3">

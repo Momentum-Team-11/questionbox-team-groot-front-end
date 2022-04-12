@@ -3,8 +3,9 @@ import axios from "axios"
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
-import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { QuestionCard } from "./QuestionCard";
 
 const QuestionList = () => {
   const [questions, setQuestions] = useState([]);
@@ -24,7 +25,7 @@ const QuestionList = () => {
     <div className="header-home">
       <h1>These friends are calling...</h1>
       <Icon>
-    <FontAwesomeIcon icon={faHome} />
+    <FontAwesomeIcon icon={faHeart} />
   </Icon>
 
     </div>
@@ -33,48 +34,21 @@ const QuestionList = () => {
         <Link to="/ask">Phone a Friend!</Link>
       </Button>
     </Section>
+    <Section>
       {questions.map((question, key) => 
+        <QuestionCard
+          key={question.pk}
+          photo={question.photo}
+          user_first_name={question.user_first_name}
+          user_last_name={question.user_last_name}
+          username={question.username}
+          question={question.question}
+          pk={question.pk}
+          date_asked={question.date_asked}
+        />
       
-      <div key={key}>
-      <Container mb='5' className="question-list container-box">
-      <Card style={{ width: 800, margin: 'auto' }}>
-        <Card.Content>
-          <Media>
-            <Media.Item renderAs="figure" align="left">
-            <Image
-              size={64}
-              alt="avatar"
-              src= {question.photo} 
-            />
-          </Media.Item>
-          <Media.Item>
-            <Heading size={4}>{question.username}</Heading>
-            <Heading subtitle size={6}>
-            {question.user_first_name} {question.user_last_name} 
-            </Heading>
-            <Heading subtitle size={6}>
-            {question.date_asked}
-            </Heading>
-          </Media.Item>
-        </Media>
-        <Content>
-        <strong>{question.title}</strong>
-          <br />
-          <Container>
-            <Notification color="info-light" mt="3" mb="3">
-              {question.question}
-            </Notification>
-            </Container>
-        <Button size="small">
-        <Link to={`/questions/${question.pk}`}>
-        Click for more 
-        </Link></Button>
-        </Content>
-      </Card.Content>
-    </Card>
-  </Container>
-  </div>
   )}
+  </Section>
 </>
   );
 };

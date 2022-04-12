@@ -9,6 +9,7 @@ import UserQuestions from './components/UserQuestions';
 import useLocalStorageState from 'use-local-storage-state';
 import { Logout } from './components/Logout';
 import NavBar from './components/NavBar';
+import Search from './components/Search';
 
 const App = () => {
   //use local storage to keep this token hanging around
@@ -37,6 +38,9 @@ const App = () => {
       <NavBar
         isLoggedIn={isLoggedIn}
         />
+      <Search
+        token={token}
+        /> 
       <Routes>
         <Route path="/" element={<QuestionList token={token} />}> </Route>
         <Route path="home" element={<QuestionList token={token} />}></Route>
@@ -57,6 +61,7 @@ const App = () => {
           path="/logout"
           element={<Logout setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
+        {/* <Route path="/search" element={<Search token={token} />} /> */}
         <Route
           path="/my_questions"
           element={<UserQuestions token={token} isLoggedIn={isLoggedIn} />}
