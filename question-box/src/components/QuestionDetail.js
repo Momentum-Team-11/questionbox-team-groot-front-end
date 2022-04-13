@@ -2,12 +2,15 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import AnswerForm from './Answer'
+import { AnswerCard } from './AnswerCard'
 import { Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
 import BestAnswer  from "./BestAnswer";
+
 
 export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionPk }) => {
   const [question, setQuestion] = useState(null)
   const [responses, setResponses] = useState([])
+  const [acceptedResponse, setAcceptedResponse] = useState(null)
   
   const params = useParams()
 
@@ -21,10 +24,13 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
       .then((res) => {
         setQuestion(res.data)
         setResponses(res.data.responses)
+        setAcceptedResponse(res.data.accepted_response)
         console.log("question detail request fired")
         console.log(res.data.responses)
+        console.log(res.data)
+        console.log(acceptedResponse)
       })
-  }, [params.questionId, token])
+  }, [params.questionId, acceptedResponse, token])
 
     
 
@@ -99,17 +105,16 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
                 <small>
                   Like button
                 </small>
-            { response.accepted ? ( 
-              <h2>*I'm the accepted answer*</h2>
-            ) : (  
-            
+            {response.accepted && <p>Thanks Bestie!</p>}
+
+            {!question.accepted_response &&
             <BestAnswer
               token={token}
               responseId={response.pk}     
               questionId={question.pk}
-              acceptedResponse={response.accepted}        
+              setAcceptedResponse={setAcceptedResponse}        
               />
-            )}
+            }
               </div>
             </Content>
           </Media.Item>

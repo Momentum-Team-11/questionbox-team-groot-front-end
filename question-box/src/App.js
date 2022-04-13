@@ -38,9 +38,9 @@ const App = () => {
       <NavBar
         isLoggedIn={isLoggedIn}
         />
-      <Search
+      {/* <Search
         token={token}
-        /> 
+        />  */}
       <Routes>
         <Route path="/" element={<QuestionList token={token} />}> </Route>
         <Route path="home" element={<QuestionList token={token} />}></Route>
@@ -49,6 +49,7 @@ const App = () => {
           path="/questions/:questionId"
           element={<QuestionDetail token={token} />}
         ></Route>
+        
         <Route
           path="/login"
           element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
@@ -61,7 +62,7 @@ const App = () => {
           path="/logout"
           element={<Logout setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
-        {/* <Route path="/search" element={<Search token={token} />} /> */}
+        <Route path="/search" element={<Search token={token} />} />
         <Route
           path="/my_questions"
           element={<UserQuestions token={token} isLoggedIn={isLoggedIn} />}

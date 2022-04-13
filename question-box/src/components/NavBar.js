@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
+import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
@@ -12,7 +15,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
 
   return (
     <nav
-      className="navbar is-primary-light is-light level" 
+      className="navbar level" 
       role="navigation"
       aria-label="main navigation"
     >
@@ -25,6 +28,13 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
             Phone a Friend!
           </Link>
         </div>
+        
+        <Link to="/search">
+        <Icon><FontAwesomeIcon icon={faMagnifyingGlass} /></Icon>   
+              </Link>
+      
+        
+        
       </div>
       <div className="level-right mr-5">
         <div className="buttons level-item">

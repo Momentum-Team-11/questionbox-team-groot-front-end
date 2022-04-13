@@ -4,10 +4,10 @@ import { Container, Button, Form } from 'react-bulma-components';
 import { useParams } from 'react-router-dom'
 
 
-export default function BestAnswer({ token, responseId, questionId, acceptedResponse}) {
+export default function BestAnswer({ token, responseId, questionId, setAcceptedResponse}) {
     const [bestAnswer, setBestAnswer] = useState(false)
     const [bestQuestionPk, setBestQuestionPk] = useState(null)
-    const [acceptedExists, setAcceptedExists] = useState(false)
+    const [acceptedExists, setAcceptedExists] = useState('')
 
     const params = useParams()
     // const [questionDetail, setQuestionDetail] = useState('')
@@ -26,7 +26,7 @@ export default function BestAnswer({ token, responseId, questionId, acceptedResp
         }
       }
       ).then(res => {
-        setAcceptedExists(true)
+        setAcceptedResponse(true)
         setBestAnswer(true)
         setBestQuestionPk(res.data.question)
         console.log(res)
@@ -34,24 +34,19 @@ export default function BestAnswer({ token, responseId, questionId, acceptedResp
         console.log(questionId)
         console.log(acceptedExists)
 
+
       })
   }
 
 ///how do I get "acceptedExists to set to true so I can use that?? I tried to do it on QuestionDetail also and it's not working
-//originally had a nested ternary in the return to set the selected answer here and somehow ended up with it now in the question detail, but it should go here, ideally
+//originally had a nested ternary in the return to set the selected answer here and somehow ended up with it now in the question detail, but it should go here,
 
     return (
       
       <>
-      {(!acceptedResponse && (bestQuestionPk === questionId))  ? (
-        ""
-      ) : (
-
       <Button onClick={(e) => handleBest(e)}>
         Award best answer?
     </Button>
-      )
-    }
       </>
     )
 }
