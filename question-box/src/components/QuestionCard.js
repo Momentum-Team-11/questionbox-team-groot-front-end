@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notification } from 'react-bulma-components';
 
 
-export const QuestionCard = ({ photo, user_first_name, user_last_name, username, question, pk, date_asked, token, setBestAnswer, bestAnswer }) => {
+export const QuestionCard = ({ photo, user_first_name, user_last_name, username, question, pk, date_asked, title, token, setBestAnswer, bestAnswer }) => {
   return (
       <Container mb='5' className="question-list container-box">
   
@@ -27,7 +27,7 @@ export const QuestionCard = ({ photo, user_first_name, user_last_name, username,
           </Media.Item>
         </Media>
         <Content>
-        <strong>{question.title}</strong>
+        <strong>{title}</strong>
           <br />
           <Container>
             <Notification color="info-light" mt="3" mb="3">

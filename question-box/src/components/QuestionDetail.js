@@ -5,9 +5,10 @@ import AnswerForm from './Answer'
 import { Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
 import BestAnswer  from "./BestAnswer";
 
-export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, questionPk }) => {
+export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionPk }) => {
   const [question, setQuestion] = useState(null)
   const [responses, setResponses] = useState([])
+  
   const params = useParams()
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, questionPk })
       })
   }, [params.questionId, token])
 
-  // const response = [
+    
 
   //   responses.map(responses => [{name: 'post.firstname', 
   //   dateregistered: 'post.date', 
@@ -98,15 +99,16 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, questionPk })
                 <small>
                   Like button
                 </small>
-            { bestAnswer && (question.pk === questionPk) ? ( 
-              ""
-            ) : (
+            { response.accepted ? ( 
+              <h2>*I'm the accepted answer*</h2>
+            ) : (  
+            
             <BestAnswer
               token={token}
-              setBestAnswer={setBestAnswer}
-              BestAnswer={bestAnswer}
+              responseId={response.pk}     
+              questionId={question.pk}
+              acceptedResponse={response.accepted}        
               />
-    
             )}
               </div>
             </Content>

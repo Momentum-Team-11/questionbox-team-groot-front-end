@@ -22,6 +22,7 @@ export default function QuestionForm({ token }) {
       }
       ).then(res => {
         console.log(res)
+  
         setQuestionTitle('')
         setQuestionDetail('')
           

@@ -40,6 +40,7 @@ const QuestionList = () => {
           user_first_name={question.user_first_name}
           user_last_name={question.user_last_name}
           username={question.username}
+          title={question.title}
           question={question.question}
           pk={question.pk}
           date_asked={question.date_asked}
