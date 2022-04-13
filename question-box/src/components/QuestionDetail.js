@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import AnswerForm from './Answer'
 import { Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
+import BestAnswer  from "./BestAnswer";
 
-export const QuestionDetail = ({ token }) => {
+export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, questionPk }) => {
   const [question, setQuestion] = useState(null)
   const [responses, setResponses] = useState([])
   const params = useParams()
@@ -97,6 +98,16 @@ export const QuestionDetail = ({ token }) => {
                 <small>
                   Like button
                 </small>
+            { bestAnswer && (question.pk === questionPk) ? ( 
+              ""
+            ) : (
+            <BestAnswer
+              token={token}
+              setBestAnswer={setBestAnswer}
+              BestAnswer={bestAnswer}
+              />
+    
+            )}
               </div>
             </Content>
           </Media.Item>
@@ -110,7 +121,8 @@ export const QuestionDetail = ({ token }) => {
       <Media id={question.pk} renderAs="article">
           <Media.Item align="left">
             <Image
-              src="http://bulma.io/images/placeholders/128x128.png"
+              // src="http://bulma.io/images/placeholders/128x128.png"
+              src="https://source.unsplash.com/random/128X128/?phone"
               size={64}
             />
           </Media.Item>

@@ -24,9 +24,7 @@ const QuestionList = () => {
     <>
     <div className="header-home">
       <h1>These friends are calling...</h1>
-      <Icon>
-    <FontAwesomeIcon icon={faHeart} />
-  </Icon>
+      <Icon><FontAwesomeIcon icon={faHeart} /></Icon>
 
     </div>
     <Section>
@@ -35,7 +33,7 @@ const QuestionList = () => {
       </Button>
     </Section>
     <Section>
-      {questions.map((question, key) => 
+      {questions.map((question ) => 
         <QuestionCard
           key={question.pk}
           photo={question.photo}
