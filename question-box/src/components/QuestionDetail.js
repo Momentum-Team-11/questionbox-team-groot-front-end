@@ -103,15 +103,15 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
                 <strong>{response.user}</strong>
                 <br />
                 <p>{response.date_answered}</p>
-              <Box className="mr-6 mt-4 pt-5 pb-5" style={{
+              <Box className="mr-6 mt-4 pt-5 pb-4" style={{
       border: '1.5px dotted turquoise'
     }}>
                 {response.answer}
-                </Box>
+               
                 <br />
                 
         {/* <Icon className="mr-4 mt-3 pink"><FontAwesomeIcon icon={faAward}/></Icon>    */}
-        <Icon className="mr-4 pink"><FontAwesomeIcon icon={faHeart}/></Icon>  
+        <Icon className="mr-4 mt-6 pink"><FontAwesomeIcon icon={faHeart}/></Icon>  
             {response.accepted && <Notification className="is-danger is-light mr-6 p-3"><strong>Thanks Bestie!</strong></Notification>}
 
             {(!question.accepted_response && (username === question.user) &&
@@ -122,6 +122,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
               setAcceptedResponse={setAcceptedResponse}        
               />
             )}
+             </Box>
               </div>
             </Content>
           </Media.Item>
