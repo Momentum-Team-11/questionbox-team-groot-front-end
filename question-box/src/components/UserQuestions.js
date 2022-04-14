@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { Card, Media, Heading, Content,  Button, Container, Notification } from 'react-bulma-components';
 
-const UserQuestions = ({ isLoggedIn, token }) => {
+const UserQuestions = ({ isLoggedIn, token, username }) => {
   const [userQuestions, setUserQuestions] = useState([]);
  
   useEffect(() => {
@@ -27,9 +27,10 @@ const UserQuestions = ({ isLoggedIn, token }) => {
 
   return (
     <>
-    <div className="header-home">
-      <h1>This is a list of the user's questions. </h1>
-      
+    <div className="columns is-mobile mt-6 mb-6">
+      <div className="column is-half is-offset-one-quarter">
+      <Heading>This is a list of all your questions, <em>{username}</em>. Thanks making the call! </Heading> 
+      </div>
     </div>
     {/* <Section>
     <Button>

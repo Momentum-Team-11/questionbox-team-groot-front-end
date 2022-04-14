@@ -87,7 +87,9 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
     </Card>
   </Section>
  
+  
   <Section style={{ width:'65%', margin: 'auto' }}>    
+  {question.responses && ( 
       <Box >
       {responses.map((response, idx) => 
         <Media key={response.pk}renderAs="article">
@@ -112,7 +114,10 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
                 
         {/* <Icon className="mr-4 mt-3 pink"><FontAwesomeIcon icon={faAward}/></Icon>    */}
         <Icon className="mr-4 mt-6 pink"><FontAwesomeIcon icon={faHeart}/></Icon>  
-            {response.accepted && <Notification className="is-danger is-light mr-6 p-3"><strong>Thanks Bestie!</strong></Notification>}
+            {response.accepted && 
+            <Notification className="is-danger is-light mr-6 p-3">
+              <strong>Thanks Bestie!</strong>
+            </Notification>}
 
             {(!question.accepted_response && (username === question.user) &&
             <BestAnswer
@@ -122,13 +127,15 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
               setAcceptedResponse={setAcceptedResponse}        
               />
             )}
-             </Box>
+            </Box>
+           
               </div>
             </Content>
           </Media.Item>
         </Media>
       )}
     </Box>
+    )}
 
 
   {/* Here is where a user can reply */}

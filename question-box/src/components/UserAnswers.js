@@ -1,10 +1,11 @@
 import axios from "axios"
 import {useState, useEffect} from 'react'
 import { Link, Navigate } from 'react-router-dom';
-import { Card, Media, Heading, Content,  Button, Container, Notification } from 'react-bulma-components';
+import {  Card, Media, Heading, Content,  Button, Container, Notification } from 'react-bulma-components';
 
-const UserAnswers = ({ isLoggedIn, token }) => {
+const UserAnswers = ({ isLoggedIn, token, username }) => {
   const [userAnswers, setUserAnswers] = useState([]);
+  const [numberAnswers, setNumberAnswers] = useState(0)
  
   useEffect(() => {
     console.log("token", token)
@@ -16,7 +17,8 @@ const UserAnswers = ({ isLoggedIn, token }) => {
       })
       .then((response) => {
         console.log(response.data)
-        setUserAnswers(response.data) 
+        setUserAnswers(response.data)
+        setNumberAnswers(response.data.length) 
       })
   }, [token])
 
@@ -28,9 +30,10 @@ const UserAnswers = ({ isLoggedIn, token }) => {
 
   return (
     <>
-    <div className="header-home">
-      <h1>This is a list of the user's answers. </h1>
-      
+    <div className="columns is-mobile mt-6 mb-6">
+      <div className="column is-half is-offset-one-quarter">
+      <Heading>This is a list of all your responses, <em>{username}</em>. Thanks for answering the call! </Heading> 
+      </div>
     </div>
     {/* <Section>
     <Button>

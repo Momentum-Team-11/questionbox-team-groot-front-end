@@ -65,11 +65,11 @@ const App = () => {
         <Route path="/search" element={<Search token={token} />} />
         <Route
           path="/my_questions"
-          element={<UserQuestions token={token} isLoggedIn={isLoggedIn} />}
+          element={<UserQuestions username={username} token={token} isLoggedIn={isLoggedIn} />}
         />
         <Route
           path="/my_answers"
-          element={<UserAnswers token={token} isLoggedIn={isLoggedIn} />}
+          element={<UserAnswers token={token} username={username} isLoggedIn={isLoggedIn} />}
         />
       </Routes>
     </Router>

@@ -22,7 +22,6 @@ export default function QuestionForm({ token }) {
       }
       ).then(res => {
         console.log(res)
-  
         setQuestionTitle('')
         setQuestionDetail('')
           
@@ -40,10 +39,10 @@ export default function QuestionForm({ token }) {
 
     return (
       <>
-        <Button>
-          <Link to="/">Back to all questions</Link>
-        </Button>
-        <Container className='form-container'>
+      <Link to="/">
+        <Button className="is-link is-outlined ml-6">Back to all questions</Button>
+        </Link>
+        <Container className='form-container mt-6'>
           <form className='question-form' onSubmit={handleAsk}>
               <Form.Label className='form-label'>What's your Question, friend? </Form.Label>
                 <Form.Input
@@ -61,7 +60,9 @@ export default function QuestionForm({ token }) {
                   value={questionDetail}
                   onChange={(e) => handleChange('questDetail', e)}
                 />
-            <Button className='submit-button'>Submit Question</Button>
+             {/* <Link to="/"> */}
+            <Button className='submit-button is-primary mt-3'>Submit Question</Button>
+            {/* </Link> */}
           </form>
         </Container>
       </>
