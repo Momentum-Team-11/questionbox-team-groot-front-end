@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notification, Section } from 'react-bulma-components';
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faHomeLg, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
@@ -26,7 +26,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
       
     >
       <div className="level-left">
-        <div className="is-size-3 has-text-dark py-3 px-3 level-item">
+        <div className="is-size-1 has-text-dark py-3 px-3 level-item">
         <img className="ml-5"
           src="/phone-teal.jpeg"
           alt="Phone a friend logo"
@@ -41,15 +41,19 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
           </Link>
         </div>
         
-        <Link to="/search">
-        <Icon><FontAwesomeIcon icon={faMagnifyingGlass} /></Icon>   
-              </Link>
+        
       
         
         
       </div>
       <div className="level-right mr-5">
         <div className="buttons level-item">
+        <Link to="/search">
+        <Icon className="mr-4"><FontAwesomeIcon icon={faMagnifyingGlass} /></Icon>   
+              </Link>
+              <Link to="/">
+        <Icon className="mr-4"><FontAwesomeIcon icon={faHomeLg} /></Icon>   
+              </Link>
           {!isLoggedIn ? (
             <>
               <Link to="/register" className="button is-primary">

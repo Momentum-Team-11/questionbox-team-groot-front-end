@@ -47,7 +47,7 @@ const App = () => {
         <Route path="/ask" element={<AskQuestion token={token} />}></Route>
         <Route
           path="/questions/:questionId"
-          element={<QuestionDetail token={token} />}
+          element={<QuestionDetail token={token} username={username}/>}
         ></Route>
         
         <Route

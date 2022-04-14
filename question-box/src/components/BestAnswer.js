@@ -44,8 +44,8 @@ export default function BestAnswer({ token, responseId, questionId, setAcceptedR
     return (
       
       <>
-      <Button onClick={(e) => handleBest(e)}>
-        Award best answer?
+      <Button className="is-small is-primary" onClick={(e) => handleBest(e)}>
+        <strong>Award best answer?</strong>
     </Button>
       </>
     )

@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import AnswerForm from './Answer'
 import { AnswerCard } from './AnswerCard'
-import { Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
+import { Icon, Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
 import BestAnswer  from "./BestAnswer";
+import { faAward, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionPk }) => {
+export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bestQuestionPk }) => {
   const [question, setQuestion] = useState(null)
   const [responses, setResponses] = useState([])
   const [acceptedResponse, setAcceptedResponse] = useState(null)
@@ -29,8 +30,9 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
         console.log(res.data.responses)
         console.log(res.data)
         console.log(acceptedResponse)
+        console.log(username)
       })
-  }, [params.questionId, acceptedResponse, token])
+  }, [params.questionId, acceptedResponse, username, token])
 
     
 
@@ -63,7 +65,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
             />
           </Media.Item>
           <Media.Item>
-            <Heading size={4}>{question.username}</Heading>
+            <Heading size={4}>{question.user}</Heading>
             <Heading subtitle size={6}>
             {question.user_first_name} {question.user_last_name} 
             </Heading>
@@ -101,21 +103,25 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
                 <strong>{response.user}</strong>
                 <br />
                 <p>{response.date_answered}</p>
+              <Box className="mr-6 mt-4 pt-5 pb-5" style={{
+      border: '1.5px dotted turquoise'
+    }}>
                 {response.answer}
+                </Box>
                 <br />
-                <small>
-                  Like button
-                </small>
-            {response.accepted && <p>Thanks Bestie!</p>}
+                
+        {/* <Icon className="mr-4 mt-3 pink"><FontAwesomeIcon icon={faAward}/></Icon>    */}
+        <Icon className="mr-4 pink"><FontAwesomeIcon icon={faHeart}/></Icon>  
+            {response.accepted && <Notification className="is-danger is-light mr-6 p-3"><strong>Thanks Bestie!</strong></Notification>}
 
-            {!question.accepted_response &&
+            {(!question.accepted_response && (username === question.user) &&
             <BestAnswer
               token={token}
               responseId={response.pk}     
               questionId={question.pk}
               setAcceptedResponse={setAcceptedResponse}        
               />
-            }
+            )}
               </div>
             </Content>
           </Media.Item>

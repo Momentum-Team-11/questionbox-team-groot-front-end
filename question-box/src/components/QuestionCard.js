@@ -6,7 +6,7 @@ export const QuestionCard = ({ photo, user_first_name, user_last_name, username,
   return (
       <Container mb='5' className="question-list container-box">
   
-      <Card style={{ width: '65%', margin: 'auto', border:'2px dotted gray'}}>
+      <Card style={{ width: '65%', margin: 'auto', border:'2px dotted turquoise'}}>
         <Card.Content>
           <Media >
             <Media.Item renderAs="figure" align="left">
