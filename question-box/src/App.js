@@ -1,5 +1,6 @@
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
+// import Home from './components/Home;
 import AskQuestion from './components/AskQuestion';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';

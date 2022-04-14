@@ -30,14 +30,13 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
         <img className="ml-5"
           src="/phone-teal.jpeg"
           alt="Phone a friend logo"
-          width="112"
+          width="100"
           height="40"
         />
           <Link to="/">
-            <span className="icon is-large mr-1">
-              <i className="fa-solid fa-book-bookmark"></i>
+            <span id="top" className="top-title">
+            <p className="top">Phone a Friend</p>
             </span>
-            Phone a Friend!
           </Link>
         </div>
         
@@ -49,7 +48,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
       <div className="level-right mr-5">
         <div className="buttons level-item">
         <Link to="/search">
-        <Icon className="mr-4"><FontAwesomeIcon icon={faMagnifyingGlass} /></Icon>   
+        <Icon className="mr-4 "><FontAwesomeIcon icon={faMagnifyingGlass} /></Icon>   
               </Link>
               <Link to="/">
         <Icon className="mr-4"><FontAwesomeIcon icon={faHomeLg} /></Icon>   

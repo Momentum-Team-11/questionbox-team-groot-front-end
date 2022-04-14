@@ -22,20 +22,24 @@ const QuestionList = () => {
 
   return (
     <>
-    
-    <div className="columns is-mobile mt-6 mb-6">
-      <div className="column is-half is-offset-one-quarter">
-      <Heading><Icon><FontAwesomeIcon icon={faHeart}/></Icon> We all have questions, friend. <Icon><FontAwesomeIcon icon={faHeart} /></Icon> </Heading> 
-      <div className="column is-half is-offset-one-quarter">
-      <Link to="/ask"><Button color="link"><strong>Phone a Friend!</strong></Button></Link>
-      </div>
-      </div>
+    <Section className="p-2"></Section>
+    <Section className="p-6 mt-6" style={{ width: '50%', margin: 'auto', border: '3px solid gray'}}>
+    <Heading className="title is-1 has-text-centered mt-5">
+      {/* <Icon><FontAwesomeIcon icon={faHeart} /></Icon>   */}
+      We all have questions, friend. 
+      {/* <Icon><FontAwesomeIcon icon={faHeart} /></Icon>  */}
+      </Heading> 
+    <div className="p-4 has-text-centered">
+    <Link to={{hash:"#the-hash"}}><Button color="link" className="mr-3"><strong>Answer a Call</strong></Button></Link>
+    <Link to="/ask"><Button className="is-link is-outlined ml-3"><strong>Phone a Friend</strong></Button></Link>
     </div>
+    </Section>
+    
  
     <Section className="header-home">
-    <div className="columns is-mobile mt-6 mb-6">
+    <div className="columns is-mobile mt-6 mb-2">
       <div className="column is-half is-offset-one-quarter">
-      <h1>These friends are calling. Ready to answer a call?...</h1> 
+      <h2 id="#" className="title is-4 is-gray">These friends are calling. Ready to answer?...</h2> 
         </div>
       </div>
       {questions.map((question ) => 

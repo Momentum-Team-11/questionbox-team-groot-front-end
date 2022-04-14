@@ -1,10 +1,30 @@
 html { 
-  background: url("https://cdn.wallpapersafari.com/63/22/hkJUmE.jpg") no-repeat center center fixed; 
+  /* background: url("https://cdn.wallpapersafari.com/63/22/hkJUmE.jpg") no-repeat center center fixed;  */
+  background: url("https://cdn.wallpapersafari.com/51/75/dFhnNH.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
+
+.title {
+  font-family: 'Secular One', sans-serif;
+}
+
+.top {
+  font-family: 'Monoton', cursive;
+  font-size: 60px;
+  margin-left: 30px;
+  float:top;
+  /* padding-bottom: 45px; */
+ 
+  }
+  font-family: 'Comfortaa', cursive;
+  font-family: 'Monoton', cursive;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Roboto Mono', monospace;
+  font-family: 'Satisfy', cursive;
+  font-family: 'Shrikhand', cursive;
 
 /* * {
   margin: 0;

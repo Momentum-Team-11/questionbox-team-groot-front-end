@@ -44,7 +44,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
 
   return (
     <>
-      <Button><Link to="/">Back to all questions</Link></Button>
+      <Button className="ml-6"><Link to="/">Back to all questions</Link></Button>
     
       {question && (
         <>

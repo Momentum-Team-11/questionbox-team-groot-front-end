@@ -29,7 +29,7 @@ const UserQuestions = ({ isLoggedIn, token, username }) => {
     <>
     <div className="columns is-mobile mt-6 mb-6">
       <div className="column is-half is-offset-one-quarter">
-      <Heading>This is a list of all your questions, <em>{username}</em>. Thanks making the call! </Heading> 
+      <Heading>This is a list of all your questions, <em>{username}</em>. Thanks for making the call! </Heading> 
       </div>
     </div>
     {/* <Section>

@@ -35,7 +35,7 @@ export const QuestionCard = ({ photo, user_first_name, user_last_name, username,
             </Notification>
             </Container>
         <Link to={`/questions/${pk}`}>
-          <Button className="is-small is-primary">Click for more </Button>
+          <Button className="is-small is-link">Click for more </Button>
         </Link>
         </Content>
       </Card.Content>
