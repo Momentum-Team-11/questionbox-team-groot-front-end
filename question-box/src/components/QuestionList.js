@@ -22,13 +22,11 @@ const QuestionList = () => {
 
   return (
     <>
-    <div className="header-home">
-      <h1>These friends are calling...</h1>
-      <Icon><FontAwesomeIcon icon={faHeart} /></Icon>
-
-    </div>
+    <Section className="header-home is-centered">
+      <h1>These friends are calling...</h1> <Icon><FontAwesomeIcon icon={faHeart} /></Icon>
+    </Section>
     <Section>
-      <Button>
+      <Button color="success">
         <Link to="/ask">Phone a Friend!</Link>
       </Button>
     </Section>

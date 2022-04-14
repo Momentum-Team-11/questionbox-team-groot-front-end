@@ -4,6 +4,7 @@ import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notifica
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const NavBar = ({ handleLogout, isLoggedIn }) => {
 
     const [toggleMenu, setToggleMenu] = useState(false)
@@ -14,13 +15,24 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
   
 
   return (
+    <>
+      <div id="top">
+      <br></br>
+      </div>
     <nav
-      className="navbar level" 
+      className="navbar level ml3" 
       role="navigation"
       aria-label="main navigation"
+      
     >
       <div className="level-left">
         <div className="is-size-3 has-text-dark py-3 px-3 level-item">
+        <img className="ml-5"
+          src="/phone-teal.jpeg"
+          alt="Phone a friend logo"
+          width="112"
+          height="40"
+        />
           <Link to="/">
             <span className="icon is-large mr-1">
               <i className="fa-solid fa-book-bookmark"></i>
@@ -77,6 +89,7 @@ const NavBar = ({ handleLogout, isLoggedIn }) => {
         </div>
       </div>
     </nav>
+    </>
   )
 }
 export default NavBar
@@ -89,12 +102,7 @@ export default NavBar
 //   return (
 //     <div className="navbar">
 //       <h5>NAVBAR</h5>
-//       <img
-//           src="./logo.png"
-//           alt="Phone a friend logo"
-//           width="112"
-//           height="40"
-//         />
+     
 //       <h1>Phone a Friend</h1>
 //       <ul>
 //         <li><Link to="/login">Login</Link></li>

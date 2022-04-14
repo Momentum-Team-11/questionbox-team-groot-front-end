@@ -6,7 +6,7 @@ export const AnswerCard = ({ user, date_asked, title, answer, pk }) => {
   return (    
 
       <Container mb='5' className="question-list container-box">
-      <Card style={{ width: 800, margin: 'auto' }}>
+      <Card>
         <Card.Content>
           <Media>
           <Media.Item>
@@ -24,7 +24,7 @@ export const AnswerCard = ({ user, date_asked, title, answer, pk }) => {
               {answer}
             </Notification>
             </Container>
-        <Button size="small">
+        <Button size="small" color="primary">
         <Link to={`/questions/${pk}`}>
         See original question 
         </Link></Button>

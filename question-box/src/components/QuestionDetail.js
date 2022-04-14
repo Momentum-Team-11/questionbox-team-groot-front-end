@@ -46,17 +46,20 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
     
       {question && (
         <>
-          <div className="question content container-box" id={question.pk}>
-          <Container mb='5' className="question-list container-box">
-      {/* <Card style={{ width: 800, margin: 'auto' }}> */}
-      <Card>
+      
+      <Section style={{ width: '65%', margin: 'auto' }} > 
+      {/* <Card style={{ width: 500, margin: 'auto' }}> */}
+      <Card style={{
+      border: '2px dotted gray'
+    }}>
         <Card.Content>
           <Media>
             <Media.Item renderAs="figure" align="left">
             <Image
               size={64}
               alt="avatar"
-              src= {question.photo} 
+              src= "https://source.unsplash.com/random/128X128/?phone"
+              mb="3"
             />
           </Media.Item>
           <Media.Item>
@@ -69,22 +72,20 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
             </Heading>
           </Media.Item>
         </Media>
-        <Content>
+     
         <strong>{question.title}</strong>
           <br />
           <Container>
-            <Notification color="info-light" mt="3" mb="3">
+            <Notification color="info-light" mt="3" mb="2">
               {question.question}
             </Notification>
             </Container>
-        </Content>
+      
       </Card.Content>
     </Card>
-  </Container>
-  </div>
-  These are the responses
-  <Section>
-    
+  </Section>
+ 
+  <Section style={{ width:'65%', margin: 'auto' }}>    
       <Box >
       {responses.map((response, idx) => 
         <Media key={response.pk}renderAs="article">
@@ -124,8 +125,9 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, bestQuestionP
 
 
   {/* Here is where a user can reply */}
-    <Box>
-      <Media id={question.pk} renderAs="article">
+    <Box mt="4" >
+  
+      <Media id={question.pk} renderAs="article" >
           <Media.Item align="left">
             <Image
               // src="http://bulma.io/images/placeholders/128x128.png"

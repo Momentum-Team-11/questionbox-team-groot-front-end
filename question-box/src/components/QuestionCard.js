@@ -6,14 +6,14 @@ export const QuestionCard = ({ photo, user_first_name, user_last_name, username,
   return (
       <Container mb='5' className="question-list container-box">
   
-      <Card style={{ width: 800, margin: 'auto' }}>
+      <Card style={{ width: '65%', margin: 'auto', border:'2px dotted gray'}}>
         <Card.Content>
-          <Media>
+          <Media >
             <Media.Item renderAs="figure" align="left">
             <Image
               size={64}
               alt="avatar"
-              src= {photo} 
+              src= "http://bulma.io/images/placeholders/128x128.png" 
             />
           </Media.Item>
           <Media.Item>
