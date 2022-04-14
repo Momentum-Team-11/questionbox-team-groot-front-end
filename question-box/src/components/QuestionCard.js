@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom'
 import { Icon, Card, Media, Heading, Content, Image, Button, Container, Notification } from 'react-bulma-components';
 
 
-export const QuestionCard = ({ photo, user_first_name, user_last_name, username, question, pk, date_asked, title, token, setBestAnswer, bestAnswer }) => {
+export const QuestionCard = ({ photo, user_first_name, user_last_name, username, question, pk, date_asked, title }) => {
   return (
       <Container mb='5' className="question-list container-box">
   
-      <Card style={{ width: '65%', margin: 'auto', border:'2px dotted turquoise'}}>
+      <Card style={{ width: '65%', margin: 'auto', border:'2px solid turquoise'}}>
         <Card.Content>
           <Media ClassName="pb-2">
             <Media.Item renderAs="figure" align="left" ClassName="mb-1">

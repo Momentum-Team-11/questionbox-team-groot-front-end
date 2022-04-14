@@ -10,7 +10,7 @@ export const Logout = ({ setAuth, setToken, setUsername, isLoggedIn}) => {
   }
 
   if (!isLoggedIn) {
-    return <Navigate to="/home" />
+    return <Navigate to="/" />
   }
 
   return(

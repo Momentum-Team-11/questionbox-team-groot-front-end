@@ -8,10 +8,11 @@ import BestAnswer  from "./BestAnswer";
 import { faAward, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bestQuestionPk }) => {
+export const QuestionDetail = ({ token, username }) => {
   const [question, setQuestion] = useState(null)
   const [responses, setResponses] = useState([])
   const [acceptedResponse, setAcceptedResponse] = useState(null)
+  const [questionSubmitted, setQuestionSubmitted] = useState(false)
   
   const params = useParams()
 
@@ -34,13 +35,6 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
       })
   }, [params.questionId, acceptedResponse, username, token])
 
-    
-
-  //   responses.map(responses => [{name: 'post.firstname', 
-  //   dateregistered: 'post.date', 
-  //   department: 'post.department'}])
-  
-  //   ];
 
   return (
     <>
@@ -74,7 +68,6 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
             </Heading>
           </Media.Item>
         </Media>
-     
         <strong>{question.title}</strong>
           <br />
           <Container>
@@ -86,7 +79,6 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
       </Card.Content>
     </Card>
   </Section>
- 
   
   <Section style={{ width:'65%', margin: 'auto' }}>    
   {question.responses && ( 
@@ -105,30 +97,31 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
                 <strong>{response.user}</strong>
                 <br />
                 <p>{response.date_answered}</p>
-              <Box className="mr-6 mt-4 pt-5 pb-4" style={{
-      border: '1.5px dotted turquoise'
-    }}>
+            <Box className="mr-6 mt-4 pt-5 pb-4" 
+              style={{
+                border: '1.5px dotted turquoise'
+                }}
+                >
                 {response.answer}
-               
                 <br />
                 
-        {/* <Icon className="mr-4 mt-3 pink"><FontAwesomeIcon icon={faAward}/></Icon>    */}
-        <Icon className="mr-4 mt-6 pink"><FontAwesomeIcon icon={faHeart}/></Icon>  
+              <Icon className="mr-4 mt-6 pink"><FontAwesomeIcon icon={faHeart}/></Icon>  
+{/* If the question has a best response selected, it gets the tag               */}
             {response.accepted && 
-            <Notification className="is-danger is-light mr-6 p-3">
-              <strong>Thanks Bestie!</strong>
-            </Notification>}
-
+              <Notification className="is-danger is-light mr-6 p-3">
+                <strong>Thanks Bestie!</strong>
+              </Notification>}
+{/* If the logged in user is the question author, and the question doesn't already have a best answer selected */}
             {(!question.accepted_response && (username === question.user) &&
             <BestAnswer
               token={token}
               responseId={response.pk}     
-              questionId={question.pk}
               setAcceptedResponse={setAcceptedResponse}        
               />
             )}
+
             </Box>
-           
+      
               </div>
             </Content>
           </Media.Item>

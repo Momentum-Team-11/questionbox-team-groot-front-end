@@ -30,7 +30,7 @@ export default function Login({ setAuth, isLoggedIn }) {
   }
 
   if (isLoggedIn) {
-    return <Navigate to="/home" />
+    return <Navigate to="/" />
   }
 
   return (
