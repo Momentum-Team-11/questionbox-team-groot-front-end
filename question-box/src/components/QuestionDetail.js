@@ -52,7 +52,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
       <Section style={{ width: '65%', margin: 'auto' }} > 
       {/* <Card style={{ width: 500, margin: 'auto' }}> */}
       <Card style={{
-      border: '2px dotted gray'
+      border: '3px dotted gray'
     }}>
         <Card.Content>
           <Media>

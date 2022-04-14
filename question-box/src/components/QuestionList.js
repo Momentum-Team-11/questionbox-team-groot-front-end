@@ -1,4 +1,4 @@
-
+//aka HOMEPAGE
 import axios from "axios"
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
@@ -22,15 +22,22 @@ const QuestionList = () => {
 
   return (
     <>
-    <Section className="header-home is-centered">
-      <h1>These friends are calling...</h1> <Icon><FontAwesomeIcon icon={faHeart} /></Icon>
-    </Section>
-    <Section>
-      <Button color="success">
-        <Link to="/ask">Phone a Friend!</Link>
-      </Button>
-    </Section>
-    <Section>
+    
+    <div className="columns is-mobile mt-6 mb-6">
+      <div className="column is-half is-offset-one-quarter">
+      <Heading><Icon><FontAwesomeIcon icon={faHeart}/></Icon> We all have questions, friend. <Icon><FontAwesomeIcon icon={faHeart} /></Icon> </Heading> 
+      <div className="column is-half is-offset-one-quarter">
+      <Link to="/ask"><Button color="link"><strong>Phone a Friend!</strong></Button></Link>
+      </div>
+      </div>
+    </div>
+ 
+    <Section className="header-home">
+    <div className="columns is-mobile mt-6 mb-6">
+      <div className="column is-half is-offset-one-quarter">
+      <h1>These friends are calling. Ready to answer a call?...</h1> 
+        </div>
+      </div>
       {questions.map((question ) => 
         <QuestionCard
           key={question.pk}
