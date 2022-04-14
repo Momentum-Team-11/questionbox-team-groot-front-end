@@ -8,12 +8,13 @@ export const QuestionCard = ({ photo, user_first_name, user_last_name, username,
   
       <Card style={{ width: '65%', margin: 'auto', border:'2px dotted turquoise'}}>
         <Card.Content>
-          <Media >
-            <Media.Item renderAs="figure" align="left">
+          <Media ClassName="pb-2">
+            <Media.Item renderAs="figure" align="left" ClassName="mb-1">
             <Image
               size={64}
               alt="avatar"
-              src= "http://bulma.io/images/placeholders/128x128.png" 
+              // src= "http://bulma.io/images/placeholders/128x128.png" 
+              src="https://source.unsplash.com/random/128X128/?phone"
             />
           </Media.Item>
           <Media.Item>
@@ -26,7 +27,7 @@ export const QuestionCard = ({ photo, user_first_name, user_last_name, username,
             </Heading>
           </Media.Item>
         </Media>
-        <Content>
+        <Content className="mt-6">
         <strong>{title}</strong>
           <br />
           <Container>

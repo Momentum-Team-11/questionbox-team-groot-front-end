@@ -1,6 +1,6 @@
 import QuestionList from './components/QuestionList';
 import QuestionDetail from './components/QuestionDetail';
-// import Home from './components/Home;
+import Home from './components/Home';
 import AskQuestion from './components/AskQuestion';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login';
@@ -43,8 +43,8 @@ const App = () => {
         token={token}
         />  */}
       <Routes>
-        <Route path="/" element={<QuestionList token={token} />}> </Route>
-        <Route path="home" element={<QuestionList token={token} />}></Route>
+        <Route path="/questions" element={<QuestionList token={token} />}> </Route>
+        <Route path="/" element={<Home token={token} />}></Route>
         <Route path="/ask" element={<AskQuestion token={token} />}></Route>
         <Route
           path="/questions/:questionId"

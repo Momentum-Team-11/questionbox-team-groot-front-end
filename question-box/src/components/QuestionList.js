@@ -7,7 +7,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { QuestionCard } from "./QuestionCard";
 
-const QuestionList = () => {
+const Home = () => {
   const [questions, setQuestions] = useState([]);
   // const [questionId, setQuestionId] = useState(null)
   
@@ -22,24 +22,11 @@ const QuestionList = () => {
 
   return (
     <>
-    <Section className="p-2"></Section>
-    <Section className="p-6 mt-6" style={{ width: '50%', margin: 'auto', border: '3px solid gray'}}>
-    <Heading className="title is-1 has-text-centered mt-5">
-      {/* <Icon><FontAwesomeIcon icon={faHeart} /></Icon>   */}
-      We all have questions, friend. 
-      {/* <Icon><FontAwesomeIcon icon={faHeart} /></Icon>  */}
-      </Heading> 
-    <div className="p-4 has-text-centered">
-    <Link to={{hash:"#the-hash"}}><Button color="link" className="mr-3"><strong>Answer a Call</strong></Button></Link>
-    <Link to="/ask"><Button className="is-link is-outlined ml-3"><strong>Phone a Friend</strong></Button></Link>
-    </div>
-    </Section>
-    
- 
+    <Button className="ml-6"><Link to="/">Back Home</Link></Button>
     <Section className="header-home">
-    <div className="columns is-mobile mt-6 mb-2">
+    <div className="columns is-mobile mt-6 mb-2 ml-0 pl-0">
       <div className="column is-half is-offset-one-quarter">
-      <h2 id="#" className="title is-4 is-gray">These friends are calling. Ready to answer?...</h2> 
+      <Heading className="title is-2 is-gray ml-0 pl-0">These friends are calling. Ready to answer?...</Heading> 
         </div>
       </div>
       {questions.map((question ) => 
@@ -61,45 +48,4 @@ const QuestionList = () => {
   );
 };
 
-export default QuestionList;
-// <Card.Image
-// size="4by3"
-// src="http://bulma.io/images/placeholders/1280x960.png"
-// />
-  
-  // return (
-  //   <>
-  //     <div className="header">
-  //       <h1>List of Questions</h1>
-  //     </div>
-  //       <h1 className="page-title">All categories</h1>
-  //       {questions.map((question, key) => 
-  //       <h2>{question.title}</h2>
-        
-        
-  //       )}
-        
-  //   </>
- 
-
-
-
-         {/* {questions.map(quest => ( */}
-        //   <>
-        //   <div className="question-thumbnail">
-        //     <Question title={quest.title} user={quest.user} />
-        //   </div>
-        //   </>
-        // ))}
-        {/* <div className="book-container">
-      
-        {test_data.map((quest, idx) => {
-          return <Question
-            user={quest.user}
-            title={quest.title}
-            question={quest.question}
-            date={quest.date_asked}
-            key={idx}
-            />
-        })}
-        </div>  */}
+export default Home;

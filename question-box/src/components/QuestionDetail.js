@@ -5,7 +5,7 @@ import AnswerForm from './Answer'
 import { AnswerCard } from './AnswerCard'
 import { Icon, Container, Notification, Section, Box, Heading, Card, Media, Content, Image, Button } from 'react-bulma-components';
 import BestAnswer  from "./BestAnswer";
-import { faAward, faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faAward, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bestQuestionPk }) => {
@@ -44,7 +44,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
 
   return (
     <>
-      <Button className="ml-6"><Link to="/">Back to all questions</Link></Button>
+      <Button className="ml-6"><Link to="/questions">Back to all questions</Link></Button>
     
       {question && (
         <>
@@ -167,7 +167,7 @@ export const QuestionDetail = ({ token, setBestAnswer, bestAnswer, username, bes
     
   )
 }
-export default QuestionDetail
+export default QuestionDetail;
 
 
 // {responses.map((response, idx) => 
