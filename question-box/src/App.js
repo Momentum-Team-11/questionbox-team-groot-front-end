@@ -43,7 +43,7 @@ const App = () => {
         token={token}
         />  */}
       <Routes>
-        <Route path="/questions" element={<QuestionList token={token} />}> </Route>
+        <Route path="/questions" element={<QuestionList token={token} username={username} />}> </Route>
         <Route path="/" element={<Home token={token} />}></Route>
         <Route path="/ask" element={<AskQuestion token={token} />}></Route>
         <Route

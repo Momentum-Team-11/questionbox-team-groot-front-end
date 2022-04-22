@@ -7,6 +7,7 @@ import { Icon, Container, Notification, Section, Box, Heading, Card, Media, Cont
 import BestAnswer  from "./BestAnswer";
 import { faAward, faHeart, faHome } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LoginAlert from './LoginAlert'
 
 export const QuestionDetail = ({ token, username }) => {
   const [question, setQuestion] = useState(null)
@@ -38,6 +39,12 @@ export const QuestionDetail = ({ token, username }) => {
 
   return (
     <>
+  <div>
+    <LoginAlert
+      username={username}
+    />
+  </div>
+    
       <Button className="ml-6"><Link to="/questions">Back to all questions</Link></Button>
     
       {question && (

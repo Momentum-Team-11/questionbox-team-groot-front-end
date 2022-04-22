@@ -2,8 +2,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import { Container, Button, Form } from 'react-bulma-components';
 import { Link } from 'react-router-dom'
+import LoginAlert from './LoginAlert'
 
-export default function QuestionForm({ token }) {
+export default function QuestionForm({ token, username }) {
     const [questionTitle, setQuestionTitle] = useState('')
     const [questionDetail, setQuestionDetail] = useState('')
 
@@ -38,7 +39,13 @@ export default function QuestionForm({ token }) {
     }
 
     return (
-      <>
+    <>
+    <div>
+      <LoginAlert
+      username={username}
+      token={token}
+      />
+  </div>
       <Link to="/">
         <Button className="is-link is-outlined ml-6">Back to all questions</Button>
         </Link>
