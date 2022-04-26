@@ -11,11 +11,13 @@ import useLocalStorageState from 'use-local-storage-state';
 import { Logout } from './components/Logout';
 import NavBar from './components/NavBar';
 import Search from './components/Search';
+import { useState } from 'react';
 
 const App = () => {
   //use local storage to keep this token hanging around
   const [token, setToken] = useLocalStorageState('Token', '')
   const [username, setUsername] = useLocalStorageState('Username', '')
+  const [registerSuccess, setRegisterSuccess] = useState("")
   console.log(token)
 
   const setAuth = (username, token) => {
@@ -45,7 +47,7 @@ const App = () => {
       <Routes>
         <Route path="/questions" element={<QuestionList token={token} username={username} />}> </Route>
         <Route path="/" element={<Home token={token} />}></Route>
-        <Route path="/ask" element={<AskQuestion token={token} />}></Route>
+        <Route path="/ask" element={<AskQuestion username={username} isLoggedIn={isLoggedIn} token={token} />}></Route>
         <Route
           path="/questions/:questionId"
           element={<QuestionDetail token={token} username={username}/>}
@@ -53,15 +55,15 @@ const App = () => {
         
         <Route
           path="/login"
-          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} />}
+          element={<Login setAuth={setAuth} setToken={setToken} isLoggedIn={isLoggedIn} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess} />}
         />
         <Route
             path="/register"
-            element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} setToken={setToken}/>}
+            element={<Register isLoggedIn={isLoggedIn} setAuth={setAuth} setToken={setToken} setRegisterSuccess={setRegisterSuccess} registerSuccess={registerSuccess}/>}
           />
         <Route
           path="/logout"
-          element={<Logout setAuth={setAuth} setToken={setToken} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
+          element={<Logout setAuth={setAuth} token={token} setUsername={setUsername} isLoggedIn={isLoggedIn} />}
         />
         <Route path="/search" element={<Search token={token} />} />
         <Route

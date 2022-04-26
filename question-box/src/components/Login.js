@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import axios from 'axios'
-import { Form, Button, Box } from 'react-bulma-components';
+import { Notification, Form, Button, Box } from 'react-bulma-components';
 
 
 
-export default function Login({ setAuth, isLoggedIn }) {
+export default function Login({ setAuth, isLoggedIn, registerSuccess, setRegisterSuccess }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -25,6 +25,7 @@ export default function Login({ setAuth, isLoggedIn }) {
       .then((res) => {
         console.log(res.data)
         setAuth(username, res.data.auth_token)
+        setRegisterSuccess("")
       })
       .catch((e) => setError(e.message))
   }
@@ -35,9 +36,13 @@ export default function Login({ setAuth, isLoggedIn }) {
 
   return (
     <div className="Login">
-      <h2>Log In</h2>
       <Box style={{ width: 400, margin: 'auto' }}>
       {error && <div className="error">{error}</div>}
+      {registerSuccess && 
+        <Notification color="success">
+          <strong>Registration Succesful! </strong>
+            Please login below to get started!
+        </Notification>}
       <form onSubmit={handleLogin}>
         <Form.Field className="field-controls">
           <Form.Label className="input-label" htmlFor="username">

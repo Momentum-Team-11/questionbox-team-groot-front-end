@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Form, Button, Box } from 'react-bulma-components';
 
-const Register = ({ isLoggedIn }) => {
+const Register = ({ isLoggedIn, setRegisterSuccess, registerSuccess  }) => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -23,7 +23,8 @@ const Register = ({ isLoggedIn }) => {
         .then((res) => {
           console.log(res.data);
           setIsRegistered(true);
-          console.log(isRegistered)
+          setRegisterSuccess(true);
+          console.log(isRegistered);
         })
         .catch((e) => setError(e.message))
       }

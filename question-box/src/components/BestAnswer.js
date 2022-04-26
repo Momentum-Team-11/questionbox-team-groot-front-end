@@ -5,10 +5,6 @@ import { Button } from 'react-bulma-components';
 
 
 export default function BestAnswer({ token, responseId, setAcceptedResponse}) {
-    // const [bestAnswer, setBestAnswer] = useState(false)
-    // const [bestQuestionPk, setBestQuestionPk] = useState(null)
-    // const [acceptedExists, setAcceptedExists] = useState('')
-
 
 
     const handleBest = (e) => {
@@ -26,12 +22,9 @@ export default function BestAnswer({ token, responseId, setAcceptedResponse}) {
       }
       ).then(res => {
         setAcceptedResponse(true)
-        // setBestAnswer(true)
-        // setBestQuestionPk(res.data.question)
         console.log(res)
         console.log("best answer pk:" + res.data.question)
-        // console.log(questionId)
-        // console.log(acceptedExists)
+      
 
 
       })
